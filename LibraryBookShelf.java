@@ -1,3 +1,5 @@
+package CS2050Reschke.M02.LibraryApp;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -134,25 +136,6 @@ class Library {
         setNumberOfShelves(numberOfShelves);
         setShelfCapacity(shelfCapacity);
         setBookShelf();
-    }
-
-
-    public void writeAllBooksToFile(String filename) {
-        File outputFile = new File(filename);
-        try (PrintWriter writer = new PrintWriter(outputFile)) {
-            writer.println("Library Books");
-            for (int i = 0; i < bookShelf.length; i++) {
-                for (int j = 0; j < bookShelf[i].length; j++) {
-                    writer.println(bookShelf[i][j].toString());
-
-                }
-
-            }
-            System.out.println("Library contents saved to " + outputFile.getAbsolutePath());
-        } catch (IOException exception) {
-            System.out.println("Error writing to file: " + filename);
-            System.out.println("Reason: " + exception.getMessage());
-        }
     }
 
 
@@ -661,4 +644,30 @@ class BookLoader {
 
     }
 
+
+
+    public void writeAllBooksToFile(Book[][] bookShelf, String filename) {
+        File outputFile = new File(filename);
+        try (PrintWriter writer = new PrintWriter(outputFile)) {
+            writer.println("Library Books");
+            for (int i = 0; i < bookShelf.length; i++) {
+                for (int j = 0; j < bookShelf[i].length; j++) {
+                    writer.println(bookShelf[i][j].toString());
+
+                }
+
+            }
+            System.out.println("Library contents saved to " + outputFile.getAbsolutePath());
+        } catch (IOException exception) {
+            System.out.println("Error writing to file: " + filename);
+            System.out.println("Reason: " + exception.getMessage());
+        }
+    }
+
+
 }
+
+
+
+
+
